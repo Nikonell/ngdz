@@ -1,0 +1,27 @@
+{% extends 'gdz/base.html' %}
+
+{% block title %}
+    {{book.title}}
+{% endblock title %}
+
+{% block content %}
+    <div class="container w-50">
+        <div class="border border-secondary rounded text-center text-dark">
+            <div class="row">
+                <div class="col">
+                    <a class="text-decoration-none text-dark p-2 h-100" onclick="postloader()" href="{{book.url}}">
+                        <img class="m-2 float-end rounded" src="{{book.img}}">
+                        <h3>{{book.title}}</h3>
+                        <p>{{book.author}}</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    {% for i in imgs %}
+        <div class="container w-50 border border-secondary rounded bg-white mb-4">
+            <img class="w-100 rounded" src="{{i}}" alt="">
+        </div>
+    {% endfor %}
+{% endblock content %}

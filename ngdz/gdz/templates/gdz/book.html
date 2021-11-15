@@ -1,0 +1,39 @@
+{% extends 'gdz/base.html' %}
+{% load static %}
+
+{% block title %}
+    {{book.title}}
+{% endblock title %}
+
+{% block content %}
+    <div class="container w-50">
+        <div class="border border-secondary rounded text-center text-dark">
+            <div class="row">
+                <div class="col">
+                    <a class="text-decoration-none text-dark p-2 h-100" onclick="postloader()" href="{{book.url}}">
+                        <img class="m-2 float-end rounded" src="{{book.img}}">
+                        <h3>{{book.title}}</h3>
+                        <p>{{book.author}}</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="container border border-secondary rounded bg-white text-dark p-4 pb-0">
+        {% for task_category in task_list %}
+            <div class="container border border-secondary rounded bg-white text-center text-dark px-0 py-2 mb-4">
+                <h2 class="border-bottom border-secondary pb-2">{{task_category.title}}</h2>
+                <div class="px-2">
+                    {% for task in task_category.tasks %}
+                        <a type="button" class="border border-secondary rounded text-dark text-decoration-none px-2 py-1 m-1" onclick="postloader()" href="/task{{task.link}}">{{task.title}}</a>
+                    {% endfor %}
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock content %}
+
+{% block script %}
+    <script type="text/javascript" src="{% static 'gdz/js/book.js' %}"></script>
+{% endblock %}
